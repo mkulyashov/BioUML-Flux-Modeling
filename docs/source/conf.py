@@ -3,7 +3,7 @@ import sys
 sys.path.insert(0, os.path.abspath(".."))
 
 project = "BioUML Flux Modeling"
-author = "Your Name"
+author = "mkulyashov, vkachnov, mesembaeva, emelikhova"
 release = "0.1.0"
 
 extensions = [
