@@ -1,0 +1,149 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Перечень используемых инструментов &mdash; BioUML Flux Modeling 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Доступные сценарии" href="scenarios.html" />
+    <link rel="prev" title="Быстрый запуск" href="quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BioUML Flux Modeling
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Содержание</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Быстрый запуск</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Перечень используемых инструментов</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Общий обзор инструментов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Инструменты для сборки и аннотации бактериального генома</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Инструменты для реконструкции и анализа моделей</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scenarios.html">Доступные сценарии</a></li>
+<li class="toctree-l1"><a class="reference internal" href="individual_tools.html">Использование инструментов по отдельности</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BioUML Flux Modeling</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Перечень используемых инструментов</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tools.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Перечень используемых инструментов<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>В данном разделе приведён список отдельных инструментов, используемых
+в конвейере реконструкции потоковых моделей. Каждый инструмент реализован
+как WDL-workflow и запускается внутри Docker-контейнера.</p>
+<section id="id2">
+<h2>Общий обзор инструментов<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+</section>
+<section id="id3">
+<h2>Инструменты для сборки и аннотации бактериального генома<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>Ниже приведены используемые инструменты с указанием версии программы
+(по данным Docker-образов StaPH-B на Docker Hub):</p>
+<ul class="simple">
+<li><p>fastp, версия 1.0.1  (образ <code class="docutils literal notranslate"><span class="pre">staphb/fastp:latest</span></code>)</p></li>
+<li><p>FastQC, версия 0.11.9  (образ <code class="docutils literal notranslate"><span class="pre">staphb/fastqc:latest</span></code>)</p></li>
+<li><p>SPAdes, версия 3.15.5  (образ <code class="docutils literal notranslate"><span class="pre">staphb/spades:3.15.5</span></code>)</p></li>
+<li><p>QUAST, версия 5.0.2  (образ <code class="docutils literal notranslate"><span class="pre">staphb/quast:latest</span></code>)</p></li>
+<li><p>Prokka, версия 1.14.5  (образ <code class="docutils literal notranslate"><span class="pre">staphb/prokka:latest</span></code>)</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>Инструменты для реконструкции и анализа моделей<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>Ниже перечислены инструменты (по названию и версии), используемые в WDL-сценариях:</p>
+<ul class="simple">
+<li><p>ModelSEED, версия 1.0.0 (образ <code class="docutils literal notranslate"><span class="pre">developmentontheedge/modelseed:1.0.0</span></code>)</p></li>
+<li><p>gapseq, тег <code class="docutils literal notranslate"><span class="pre">latest</span></code> (образ <code class="docutils literal notranslate"><span class="pre">cdiener/gapseq:latest</span></code>; на Docker Hub также доступны версионированные теги, например <code class="docutils literal notranslate"><span class="pre">2024.08.2</span></code>)</p></li>
+<li><p>Bactabolize, версия 1.0.0 (образ <code class="docutils literal notranslate"><span class="pre">developmentontheedge/bactabolize:1.0.0</span></code>)</p></li>
+<li><p>CobraMod, версия 1.0.0 (образ <code class="docutils literal notranslate"><span class="pre">developmentontheedge/cobramod:1.0.0</span></code>)</p></li>
+<li><p>memote, тег <code class="docutils literal notranslate"><span class="pre">latest</span></code> (образ <code class="docutils literal notranslate"><span class="pre">developmentontheedge/memote:latest</span></code>)</p></li>
+<li><p>BioEMMA, версия 1.0.0 (образ <code class="docutils literal notranslate"><span class="pre">developmentontheedge/bioemma:1.0.0</span></code>)</p></li>
+</ul>
+<p>Подробное описание параметров, входных/выходных файлов и примеров запуска
+каждого инструмента приведено в разделе <a class="reference internal" href="individual_tools.html"><span class="doc">Использование инструментов по отдельности</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Быстрый запуск" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="scenarios.html" class="btn btn-neutral float-right" title="Доступные сценарии" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

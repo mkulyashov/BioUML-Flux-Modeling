@@ -1,0 +1,720 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Использование инструментов по отдельности &mdash; BioUML Flux Modeling 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Доступные сценарии" href="scenarios.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BioUML Flux Modeling
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Содержание</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Быстрый запуск</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Перечень используемых инструментов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scenarios.html">Доступные сценарии</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Использование инструментов по отдельности</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fastp">fastp: очистка и триммирование чтений</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Входные параметры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Выходные файлы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Типичная команда fastp</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fastqc">FastQC: контроль качества чтений</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Входные параметры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Выходные файлы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Типичная команда FastQC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#spades">SPAdes: сборка генома</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Входные параметры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Выходные файлы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Типичная команда SPAdes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#quast">QUAST: оценка качества сборки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Входные параметры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Выходные файлы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Типичная команда QUAST</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#prokka">Prokka: аннотация генома</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">Входные параметры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">Выходные файлы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">Типичная команда Prokka</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modelseed">ModelSEED: реконструкция черновой модели</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">Входные параметры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">Выходные файлы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">Внутренний вызов (команда)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">Типичный ручной запуск</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#gapseq">gapseq: реконструкция модели по геному</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id27">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">Входные параметры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">Выходные файлы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">Внутренний вызов (команда)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id31">Типичный ручной запуск</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#bactabolize">Bactabolize: автоматическая реконструкция по референс-модели</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id32">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">Входные параметры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id34">Выходные файлы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">Внутренний вызов (команда)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">Типичный ручной запуск</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cobramod">CobraMod: насыщение модели аннотациями путей</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id37">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">Входные параметры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id39">Выходные файлы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id40">Внутренний вызов (команда)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id41">Типичный ручной запуск</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#memote">memote: оценка качества метаболической модели</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id42">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id43">Входные параметры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id44">Выходные файлы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id45">Внутренний вызов (команда)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id46">Типичный ручной запуск</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#bioemma">BioEMMA: автоматическая генерация метаболических карт</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id47">Назначение</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id48">Входные параметры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id49">Выходные файлы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id50">Внутренний вызов (команда)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id51">Типичный ручной запуск</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BioUML Flux Modeling</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Использование инструментов по отдельности</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/individual_tools.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Использование инструментов по отдельности<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>В данном разделе описано, как запускать отдельные инструменты конвейера
+реконструкции вне общей WDL-схемы, а также соответствие
+между параметрами WDL-workflow и фактическими параметрами CLI-команд.</p>
+<p>в скобках указано имя входа/выхода в WDL-файле.</p>
+<section id="fastp">
+<h2>fastp: очистка и триммирование чтений<a class="headerlink" href="#fastp" title="Link to this heading"></a></h2>
+<p><strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">1.1_fastp.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">ProcessReads</span></code>
+<strong>Инструмент:</strong> fastp (версия 1.0.1)
+<strong>Docker-образ:</strong> <code class="docutils literal notranslate"><span class="pre">staphb/fastp:latest</span></code></p>
+<section id="id2">
+<h3>Назначение<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>Инструмент выполняет предобработку прочтений:</p>
+<ul class="simple">
+<li><p>удаление или обрезка низкокачественных участков;</p></li>
+<li><p>контроль доли низкокачественных оснований;</p></li>
+<li><p>опциональное удаление полигомополимерных хвостов (poly-G, poly-X);</p></li>
+<li><p>формирование новых файлов с «очищенными» чтениями.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>Входные параметры<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Входные чтения R1</strong> (<code class="docutils literal notranslate"><span class="pre">reads1</span></code>) — файл с прочтениями R1 или одиночными чтениями.</p></li>
+<li><p><strong>Входные чтения R2</strong> (<code class="docutils literal notranslate"><span class="pre">reads2</span></code>) — файл с прочтениями R2 (для парных чтений).</p></li>
+<li><p><strong>Минимальный PHRED для качественного основания</strong> (<code class="docutils literal notranslate"><span class="pre">qualified_quality_phred</span></code>) —
+порог качества, выше которого основание считается «качественным».</p></li>
+<li><p><strong>Допустимый процент низкокачественных оснований</strong> (<code class="docutils literal notranslate"><span class="pre">unqualified_percent_limit</span></code>) —
+максимальная доля низкокачественных оснований в чтении.</p></li>
+<li><p><strong>Обрезать poly-G хвосты</strong> (<code class="docutils literal notranslate"><span class="pre">trim_poly_g</span></code>) — включает флаг <code class="docutils literal notranslate"><span class="pre">--trim_poly_g</span></code>.</p></li>
+<li><p><strong>Обрезать poly-X хвосты</strong> (<code class="docutils literal notranslate"><span class="pre">trim_poly_x</span></code>) — включает флаг <code class="docutils literal notranslate"><span class="pre">--trim_poly_x</span></code> для любых полигомополимеров.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Выходные файлы<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Очищенные чтения R1</strong> (<code class="docutils literal notranslate"><span class="pre">out_reads1</span></code>) — файл «R1» после фильтрации (<code class="docutils literal notranslate"><span class="pre">out.R1.fq.gz</span></code>).</p></li>
+<li><p><strong>Очищенные чтения R2</strong> (<code class="docutils literal notranslate"><span class="pre">out_reads2</span></code>) — файл «R2» после фильтрации (<code class="docutils literal notranslate"><span class="pre">out.R2.fq.gz</span></code> при наличии R2).</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>Типичная команда fastp<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fastp<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-i<span class="w"> </span>reads_R1.fastq.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-I<span class="w"> </span>reads_R2.fastq.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--qualified_quality_phred<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--unqualified_percent_limit<span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--trim_poly_g<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--trim_poly_x<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-o<span class="w"> </span>out.R1.fq.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-O<span class="w"> </span>out.R2.fq.gz
+</pre></div>
+</div>
+</section>
+</section>
+<section id="fastqc">
+<h2>FastQC: контроль качества чтений<a class="headerlink" href="#fastqc" title="Link to this heading"></a></h2>
+<p><strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">1.2_fastqc.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">fastqcIsolated</span></code>
+<strong>Инструмент:</strong> FastQC (версия 0.11.9)
+<strong>Docker-образ:</strong> <code class="docutils literal notranslate"><span class="pre">staphb/fastqc:latest</span></code></p>
+<section id="id6">
+<h3>Назначение<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>FastQC выполняет базовый контроль качества прочтений: распределение значений PHRED
+по позициям, GC-состав, дубликаты, длину чтений и др.</p>
+</section>
+<section id="id7">
+<h3>Входные параметры<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Входные чтения</strong> (<code class="docutils literal notranslate"><span class="pre">reads</span></code>) — файл с прочтениями в формате FASTQ (обычно сжатый, <code class="docutils literal notranslate"><span class="pre">.fastq.gz</span></code>).</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>Выходные файлы<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Отчёт FastQC</strong> (<code class="docutils literal notranslate"><span class="pre">out_qc</span></code>) — zip-архив или каталог с HTML-отчётом и вспомогательными файлами.</p></li>
+</ul>
+</section>
+<section id="id9">
+<h3>Типичная команда FastQC<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>fastqc_output
+fastqc<span class="w"> </span>sample.fastq.gz<span class="w"> </span>-o<span class="w"> </span>fastqc_output
+</pre></div>
+</div>
+</section>
+</section>
+<section id="spades">
+<h2>SPAdes: сборка генома<a class="headerlink" href="#spades" title="Link to this heading"></a></h2>
+<p><strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">1.3_SPAdes.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">SPAdesIsolated</span></code>
+<strong>Инструмент:</strong> SPAdes (версия 3.15.5)
+<strong>Docker-образ:</strong> <code class="docutils literal notranslate"><span class="pre">staphb/spades:3.15.5</span></code></p>
+<section id="id10">
+<h3>Назначение<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>SPAdes выполняет сборку генома на основе набора прочтений:</p>
+<ul class="simple">
+<li><p>Illumina парные чтения (R1/R2);</p></li>
+<li><p>длинные чтения (PacBio, Nanopore);</p></li>
+<li><p>Sanger-чтения;</p></li>
+<li><p>специализированные режимы (<code class="docutils literal notranslate"><span class="pre">--isolate</span></code>, <code class="docutils literal notranslate"><span class="pre">--iontorrent</span></code>).</p></li>
+</ul>
+</section>
+<section id="id11">
+<h3>Входные параметры<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Illumina чтения R1</strong> (<code class="docutils literal notranslate"><span class="pre">reads1</span></code>) — файл FASTQ с прочтениями R1.</p></li>
+<li><p><strong>Illumina чтения R2</strong> (<code class="docutils literal notranslate"><span class="pre">reads2</span></code>) — файл FASTQ с прочтениями R2.</p></li>
+<li><p><strong>PacBio чтения</strong> (<code class="docutils literal notranslate"><span class="pre">pacbio</span></code>) — файл с длинными прочтениями PacBio.</p></li>
+<li><p><strong>Nanopore чтения</strong> (<code class="docutils literal notranslate"><span class="pre">nanopore</span></code>) — файл с длинными прочтениями Nanopore.</p></li>
+<li><p><strong>Sanger чтения</strong> (<code class="docutils literal notranslate"><span class="pre">sanger</span></code>) — файл с Sanger-чтениями.</p></li>
+<li><p><strong>Режим isolate</strong> (<code class="docutils literal notranslate"><span class="pre">isolate</span></code>) — включает флаг <code class="docutils literal notranslate"><span class="pre">--isolate</span></code> при сборке из изолята.</p></li>
+<li><p><strong>Режим IonTorrent</strong> (<code class="docutils literal notranslate"><span class="pre">iontorrent</span></code>) — включает флаг <code class="docutils literal notranslate"><span class="pre">--iontorrent</span></code> для данных IonTorrent.</p></li>
+</ul>
+</section>
+<section id="id12">
+<h3>Выходные файлы<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Собранные контиги</strong> (<code class="docutils literal notranslate"><span class="pre">contigs</span></code>) — FASTA-файл с контигами.</p></li>
+<li><p><strong>Скаффолды сборки</strong> (<code class="docutils literal notranslate"><span class="pre">scaffolds</span></code>) — FASTA-файл со скаффолдами.</p></li>
+<li><p><strong>Логи SPAdes</strong> (<code class="docutils literal notranslate"><span class="pre">spades_logs</span></code>) — архив с логами выполнения.</p></li>
+<li><p><strong>Параметры запуска</strong> (<code class="docutils literal notranslate"><span class="pre">params</span></code>) — файл с параметрами SPAdes.</p></li>
+<li><p><strong>«Сломанные» скаффолды</strong> (<code class="docutils literal notranslate"><span class="pre">broken_scaffolds</span></code>) — дополнительный файл с обработанными скаффолдами.</p></li>
+</ul>
+</section>
+<section id="id13">
+<h3>Типичная команда SPAdes<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spades.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-1<span class="w"> </span>cleaned_R1.fastq.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-2<span class="w"> </span>cleaned_R2.fastq.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--isolate<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-o<span class="w"> </span>spades_output
+</pre></div>
+</div>
+<p>Основной результат сборки: <code class="docutils literal notranslate"><span class="pre">spades_output/contigs.fasta</span></code>.</p>
+</section>
+</section>
+<section id="quast">
+<h2>QUAST: оценка качества сборки<a class="headerlink" href="#quast" title="Link to this heading"></a></h2>
+<p><strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">1.4_quast.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">AssemblyQC</span></code>
+<strong>Инструмент:</strong> QUAST (версия 5.0.2)
+<strong>Docker-образ:</strong> <code class="docutils literal notranslate"><span class="pre">staphb/quast:latest</span></code></p>
+<section id="id14">
+<h3>Назначение<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<p>QUAST оценивает качество сборки:</p>
+<ul class="simple">
+<li><p>количество контигов и их распределение по длинам;</p></li>
+<li><p>суммарную длину сборки;</p></li>
+<li><p>метрики N50/N75 и т.п.;</p></li>
+<li><p>(при наличии референса) сравнение с эталонным геномом.</p></li>
+</ul>
+</section>
+<section id="id15">
+<h3>Входные параметры<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>FASTA с контигами</strong> (<code class="docutils literal notranslate"><span class="pre">contigs</span></code>) — результат сборки (например, <code class="docutils literal notranslate"><span class="pre">contigs.fasta</span></code>).</p></li>
+</ul>
+</section>
+<section id="id16">
+<h3>Выходные файлы<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Отчёты QUAST</strong> (<code class="docutils literal notranslate"><span class="pre">out_qc</span></code>) — каталог или архив с детализированным отчётом
+(таблицы, графики, HTML).</p></li>
+</ul>
+</section>
+<section id="id17">
+<h3>Типичная команда QUAST<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>quast.py<span class="w"> </span>contigs.fasta<span class="w"> </span>-o<span class="w"> </span>quast_output
+</pre></div>
+</div>
+<p>Основной HTML-отчёт обычно находится в <code class="docutils literal notranslate"><span class="pre">quast_output/report.html</span></code>.</p>
+</section>
+</section>
+<section id="prokka">
+<h2>Prokka: аннотация генома<a class="headerlink" href="#prokka" title="Link to this heading"></a></h2>
+<p><strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">1.5_PROKKA.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">ProcessReads</span></code> (шаг аннотации)
+<strong>Инструмент:</strong> Prokka (версия 1.14.5)
+<strong>Docker-образ:</strong> <code class="docutils literal notranslate"><span class="pre">staphb/prokka:latest</span></code></p>
+<section id="id18">
+<h3>Назначение<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<p>Prokka выполняет автоматическую структурную и функциональную аннотацию
+прокариотических геномов:</p>
+<ul class="simple">
+<li><p>поиск генов, тРНК, рРНК и др.;</p></li>
+<li><p>присвоение функциональных аннотаций;</p></li>
+<li><p>формирование набора стандартных выходных файлов (GFF, GBK, FAA, FNA и др.).</p></li>
+</ul>
+</section>
+<section id="id19">
+<h3>Входные параметры<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>FASTA с контигами</strong> (<code class="docutils literal notranslate"><span class="pre">contigs</span></code>) — файл сборки генома (например, <code class="docutils literal notranslate"><span class="pre">contigs.fasta</span></code>).</p></li>
+</ul>
+<p>(Дополнительные параметры Prokka вроде названия штамма, центра, BioProject и т.п.
+можно добавить в WDL по мере необходимости.)</p>
+</section>
+<section id="id20">
+<h3>Выходные файлы<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Аминокислотные последовательности белков</strong> (<code class="docutils literal notranslate"><span class="pre">out_annot</span></code>) — файл <code class="docutils literal notranslate"><span class="pre">output_folder/output.faa</span></code>,
+содержащий аннотированные белки.</p></li>
+</ul>
+</section>
+<section id="id21">
+<h3>Типичная команда Prokka<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>prokka<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--outdir<span class="w"> </span>prokka_out<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--prefix<span class="w"> </span>sample<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>contigs.fasta
+</pre></div>
+</div>
+<p>Ключевые выходы:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">prokka_out/sample.gff</span></code> — аннотированные координаты и признаки;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prokka_out/sample.faa</span></code> — аминокислотные последовательности белков;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prokka_out/sample.fna</span></code> — нуклеотидные последовательности генома/генов;</p></li>
+<li><p>дополнительные служебные файлы отчёта.</p></li>
+</ul>
+</section>
+</section>
+<section id="modelseed">
+<h2>ModelSEED: реконструкция черновой модели<a class="headerlink" href="#modelseed" title="Link to this heading"></a></h2>
+<p><strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">2.1_modelseed_TESTCASES.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">GenerateModel</span></code>
+<strong>Инструмент:</strong> ModelSEED (образ <code class="docutils literal notranslate"><span class="pre">developmentontheedge/modelseed:1.0.0</span></code>)</p>
+<section id="id22">
+<h3>Назначение<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
+<p>Создание черновой метаболической модели по геномной последовательности с использованием
+ресурсов ModelSEED: выбор шаблона, настройка среды и опциональный gap-filling.</p>
+</section>
+<section id="id23">
+<h3>Входные параметры<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>FASTA-файл генома</strong> (<code class="docutils literal notranslate"><span class="pre">fasta</span></code>) — входной файл с нуклеотидной последовательностью генома.</p></li>
+<li><p><strong>Шаблон модели</strong> (<code class="docutils literal notranslate"><span class="pre">template</span></code>) — идентификатор шаблонной модели, которую нужно использовать
+при реконструкции (например, шаблон для определённой группы бактерий).</p></li>
+<li><p><strong>Включить gap-filling</strong> (<code class="docutils literal notranslate"><span class="pre">gapfill</span></code>) — логический флаг, указывающий, нужно ли выполнять
+автоматическое добавление реакций для обеспечения роста модели.</p></li>
+<li><p><strong>Среда роста (media)</strong> (<code class="docutils literal notranslate"><span class="pre">media</span></code>) — идентификатор или название среды (media), которая будет
+использована при реконструкции/gap-filling.</p></li>
+</ul>
+</section>
+<section id="id24">
+<h3>Выходные файлы<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Реконструированная модель (SBML)</strong> (<code class="docutils literal notranslate"><span class="pre">model</span></code>) — файл <code class="docutils literal notranslate"><span class="pre">reconstructed_model.sbml</span></code>.</p></li>
+</ul>
+</section>
+<section id="id25">
+<h3>Внутренний вызов (команда)<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
+<p>Во внутреннем таске WDL выполняется команда вида:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/app/modelseed_gsm.py<span class="w"> </span>--genome<span class="w"> </span><span class="si">${</span><span class="nv">fasta</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">[</span>--template<span class="w"> </span>TEMPLATE<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">[</span>--gapfill<span class="w"> </span>true/false<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">[</span>--media<span class="w"> </span>MEDIA<span class="o">]</span>
+</pre></div>
+</div>
+</section>
+<section id="id26">
+<h3>Типичный ручной запуск<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>modelseed_gsm.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--genome<span class="w"> </span>genome.fasta<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--template<span class="w"> </span>GramNegative<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--gapfill<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--media<span class="w"> </span>M9
+</pre></div>
+</div>
+</section>
+</section>
+<section id="gapseq">
+<h2>gapseq: реконструкция модели по геному<a class="headerlink" href="#gapseq" title="Link to this heading"></a></h2>
+<p><strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">2.1_gapseq.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">GenerateModel</span></code>
+<strong>Инструмент:</strong> gapseq (образ <code class="docutils literal notranslate"><span class="pre">cdiener/gapseq:latest</span></code>)</p>
+<section id="id27">
+<h3>Назначение<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
+<p>Построение черновой модели метаболизма по геномной последовательности с помощью
+пакета gapseq: поиск путей, реакций и транспортёров, формирование модели и
+опциональное gap-filling при заданной среде.</p>
+</section>
+<section id="id28">
+<h3>Входные параметры<a class="headerlink" href="#id28" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>FASTA-файл генома</strong> (<code class="docutils literal notranslate"><span class="pre">fasta</span></code>) — входной файл с последовательностью генома.</p></li>
+<li><p><strong>Файл среды/описание среды</strong> (<code class="docutils literal notranslate"><span class="pre">media</span></code>) — файл или обозначение среды для этапа
+gap-filling (используется в команде <code class="docutils literal notranslate"><span class="pre">gapseq</span> <span class="pre">fill</span></code>). Параметр опциональный.</p></li>
+</ul>
+</section>
+<section id="id29">
+<h3>Выходные файлы<a class="headerlink" href="#id29" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Реконструированная модель (SBML)</strong> (<code class="docutils literal notranslate"><span class="pre">model</span></code>) — файл <code class="docutils literal notranslate"><span class="pre">output.xml</span></code>.</p></li>
+</ul>
+</section>
+<section id="id30">
+<h3>Внутренний вызов (команда)<a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
+<p>Согласно WDL, внутри таска выполняются команды:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ln<span class="w"> </span>-s<span class="w"> </span><span class="si">${</span><span class="nv">fasta</span><span class="si">}</span><span class="w"> </span>output.fasta
+gapseq<span class="w"> </span>doall<span class="w"> </span>output.fasta
+gapseq<span class="w"> </span>draft<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-r<span class="w"> </span>output-Reactions.tbl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-t<span class="w"> </span>output-Transporter.tbl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span>output-all-Pathways.tbl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-c<span class="w"> </span>output.fasta
+<span class="k">if</span><span class="w"> </span>defined<span class="o">(</span>media<span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>gapseq<span class="w"> </span>fill<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-m<span class="w"> </span>output-draft.RDS<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-c<span class="w"> </span>output-rxnWeights.RDS<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">media</span><span class="si">}</span>
+<span class="o">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>cp<span class="w"> </span><span class="s2">&quot;output-draft.xml&quot;</span><span class="w"> </span><span class="s2">&quot;output.xml&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id31">
+<h3>Типичный ручной запуск<a class="headerlink" href="#id31" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gapseq<span class="w"> </span>doall<span class="w"> </span>genome.fasta
+gapseq<span class="w"> </span>draft<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-r<span class="w"> </span>output-Reactions.tbl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-t<span class="w"> </span>output-Transporter.tbl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span>output-all-Pathways.tbl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-c<span class="w"> </span>genome.fasta
+gapseq<span class="w"> </span>fill<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-m<span class="w"> </span>output-draft.RDS<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-c<span class="w"> </span>output-rxnWeights.RDS<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>M9
+</pre></div>
+</div>
+</section>
+</section>
+<section id="bactabolize">
+<h2>Bactabolize: автоматическая реконструкция по референс-модели<a class="headerlink" href="#bactabolize" title="Link to this heading"></a></h2>
+<p><strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">2.1_bactabolize.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">GenerateModel</span></code>
+<strong>Инструмент:</strong> Bactabolize (образ <code class="docutils literal notranslate"><span class="pre">developmentontheedge/bactabolize:1.0.0</span></code>)</p>
+<section id="id32">
+<h3>Назначение<a class="headerlink" href="#id32" title="Link to this heading"></a></h3>
+<p>Высокопроизводительная реконструкция штамм-специфичных метаболических моделей
+путём сравнения генома исследуемого штамма с референсной (пан-)моделью и наборами
+референсных генов/белков.</p>
+</section>
+<section id="id33">
+<h3>Входные параметры<a class="headerlink" href="#id33" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>FASTA-файл сборки</strong> (<code class="docutils literal notranslate"><span class="pre">fasta</span></code>) — геномная или контиг-сборка исследуемого штамма.</p></li>
+<li><p><strong>Файл референсных генов</strong> (<code class="docutils literal notranslate"><span class="pre">ref_genes_fp</span></code>) — аннотированные последовательности генов
+для референсной модели.</p></li>
+<li><p><strong>Файл референсных белков</strong> (<code class="docutils literal notranslate"><span class="pre">ref_proteins_fp</span></code>) — аминокислотные последовательности
+белков референсной модели.</p></li>
+<li><p><strong>Файл референсной модели</strong> (<code class="docutils literal notranslate"><span class="pre">ref_model_fp</span></code>) — файл с пан-моделью (SBML/JSON, в зависимости
+от настройки Bactabolize).</p></li>
+<li><p><strong>Идентификатор биомасс-реакции</strong> (<code class="docutils literal notranslate"><span class="pre">biomass_id</span></code>) — ID реакции биомассы, которую следует
+использовать для модели.</p></li>
+<li><p><strong>Среда роста (media)</strong> (<code class="docutils literal notranslate"><span class="pre">media</span></code> / <code class="docutils literal notranslate"><span class="pre">media_type</span></code>) — тип/название среды, используемой при
+симуляциях и настройке модели.</p></li>
+<li><p><strong>Тип атмосферы</strong> (<code class="docutils literal notranslate"><span class="pre">atmosphere_type</span></code>) — условия атмосферы (например, аэробные/анаэробные).</p></li>
+<li><p><strong>Минимальное покрытие</strong> (<code class="docutils literal notranslate"><span class="pre">min_coverage</span></code>) — минимальное покрытие для учета гена при
+сопоставлении.</p></li>
+<li><p><strong>Минимальный процент идентичности</strong> (<code class="docutils literal notranslate"><span class="pre">min_pident</span></code>) — порог идентичности при выравнивании.</p></li>
+</ul>
+</section>
+<section id="id34">
+<h3>Выходные файлы<a class="headerlink" href="#id34" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Реконструированная модель (SBML)</strong> (<code class="docutils literal notranslate"><span class="pre">model</span></code>) — <code class="docutils literal notranslate"><span class="pre">output_model.xml</span></code>.</p></li>
+<li><p><strong>Таблица сопоставлений генов</strong> (<code class="docutils literal notranslate"><span class="pre">gene_dict</span></code>) — <code class="docutils literal notranslate"><span class="pre">output_gene_dictionary.csv</span></code>.</p></li>
+<li><p><strong>Модель в JSON-формате</strong> (<code class="docutils literal notranslate"><span class="pre">model_json</span></code>) — <code class="docutils literal notranslate"><span class="pre">output_model.json</span></code>.</p></li>
+<li><p><strong>Неаннотированные последовательности</strong> (<code class="docutils literal notranslate"><span class="pre">unannot_seqs</span></code>) — <code class="docutils literal notranslate"><span class="pre">output_unannotated_sequences.fasta</span></code>.</p></li>
+</ul>
+</section>
+<section id="id35">
+<h3>Внутренний вызов (команда)<a class="headerlink" href="#id35" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bactabolize<span class="w"> </span>draft_model<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--assembly_fp<span class="w"> </span><span class="si">${</span><span class="nv">fasta</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ref_genes_fp<span class="w"> </span><span class="si">${</span><span class="nv">ref_genes_fp</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ref_proteins_fp<span class="w"> </span><span class="si">${</span><span class="nv">ref_proteins_fp</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ref_model_fp<span class="w"> </span><span class="si">${</span><span class="nv">ref_model_fp</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">[</span>--biomass_reaction_id<span class="w"> </span>BIOMASS_ID<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">[</span>--media_type<span class="w"> </span>MEDIA<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">[</span>--atmosphere_type<span class="w"> </span>ATMOSPHERE<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">[</span>--min_coverage<span class="w"> </span>MIN_COVERAGE<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">[</span>--min_pident<span class="w"> </span>MIN_PIDENT<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_fp<span class="w"> </span>output
+</pre></div>
+</div>
+</section>
+<section id="id36">
+<h3>Типичный ручной запуск<a class="headerlink" href="#id36" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bactabolize<span class="w"> </span>draft_model<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--assembly_fp<span class="w"> </span>sample.fasta<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ref_genes_fp<span class="w"> </span>ref_genes.fna<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ref_proteins_fp<span class="w"> </span>ref_proteins.faa<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ref_model_fp<span class="w"> </span>ref_model.sbml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--biomass_reaction_id<span class="w"> </span>BIOMASS_rxn<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--media_type<span class="w"> </span>M9<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--atmosphere_type<span class="w"> </span>aerobic<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--min_coverage<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--min_pident<span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output_fp<span class="w"> </span>output
+</pre></div>
+</div>
+</section>
+</section>
+<section id="cobramod">
+<h2>CobraMod: насыщение модели аннотациями путей<a class="headerlink" href="#cobramod" title="Link to this heading"></a></h2>
+<p><strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">2.2_cobramod.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">SaturateModel</span></code>
+<strong>Инструмент:</strong> CobraMod (образ <code class="docutils literal notranslate"><span class="pre">developmentontheedge/cobramod:1.0.0</span></code>)</p>
+<section id="id37">
+<h3>Назначение<a class="headerlink" href="#id37" title="Link to this heading"></a></h3>
+<p>Дополнительная «насыщенность» (обогащение) метаболической модели путями, реакциями
+и аннотациями с использованием пакета CobraMod.</p>
+</section>
+<section id="id38">
+<h3>Входные параметры<a class="headerlink" href="#id38" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Входная модель (SBML)</strong> (<code class="docutils literal notranslate"><span class="pre">model</span></code>) — исходная черновая модель (файл <code class="docutils literal notranslate"><span class="pre">.sbml</span></code>).</p></li>
+</ul>
+</section>
+<section id="id39">
+<h3>Выходные файлы<a class="headerlink" href="#id39" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Обогащённая модель (SBML)</strong> (<code class="docutils literal notranslate"><span class="pre">model</span></code>) — <code class="docutils literal notranslate"><span class="pre">output_model_cobramod.sbml</span></code>.</p></li>
+</ul>
+</section>
+<section id="id40">
+<h3>Внутренний вызов (команда)<a class="headerlink" href="#id40" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ln<span class="w"> </span>-s<span class="w"> </span><span class="si">${</span><span class="nv">model</span><span class="si">}</span><span class="w"> </span>data/input_model.sbml
+cobramod_py.py
+</pre></div>
+</div>
+</section>
+<section id="id41">
+<h3>Типичный ручной запуск<a class="headerlink" href="#id41" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ln<span class="w"> </span>-s<span class="w"> </span>input_model.sbml<span class="w"> </span>data/input_model.sbml
+cobramod_py.py
+</pre></div>
+</div>
+</section>
+</section>
+<section id="memote">
+<h2>memote: оценка качества метаболической модели<a class="headerlink" href="#memote" title="Link to this heading"></a></h2>
+<p><strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">2.3_memote.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">ProcessReads</span></code> (реально — оценка модели)
+<strong>Инструмент:</strong> memote (образ <code class="docutils literal notranslate"><span class="pre">developmentontheedge/memote:latest</span></code>)</p>
+<section id="id42">
+<h3>Назначение<a class="headerlink" href="#id42" title="Link to this heading"></a></h3>
+<p>Качественная оценка метаболической модели (SBML) с помощью <code class="docutils literal notranslate"><span class="pre">memote</span></code>: проверка структуры,
+масштабируемости, масс-баланса, наличия «dead-end» реакций и др. Результат представлен
+в виде HTML-отчёта.</p>
+</section>
+<section id="id43">
+<h3>Входные параметры<a class="headerlink" href="#id43" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Модель (SBML)</strong> (<code class="docutils literal notranslate"><span class="pre">model</span></code>) — файл метаболической модели.</p></li>
+</ul>
+</section>
+<section id="id44">
+<h3>Выходные файлы<a class="headerlink" href="#id44" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>HTML-отчёт memote</strong> (<code class="docutils literal notranslate"><span class="pre">out_qc</span></code>) — <code class="docutils literal notranslate"><span class="pre">out.html</span></code>.</p></li>
+</ul>
+</section>
+<section id="id45">
+<h3>Внутренний вызов (команда)<a class="headerlink" href="#id45" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>memote<span class="w"> </span>report<span class="w"> </span>snapshot<span class="w"> </span>--filename<span class="w"> </span>out.html<span class="w"> </span><span class="si">${</span><span class="nv">model</span><span class="si">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id46">
+<h3>Типичный ручной запуск<a class="headerlink" href="#id46" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>memote<span class="w"> </span>report<span class="w"> </span>snapshot<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--filename<span class="w"> </span>memote_report.html<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>model.sbml
+</pre></div>
+</div>
+</section>
+</section>
+<section id="bioemma">
+<h2>BioEMMA: автоматическая генерация метаболических карт<a class="headerlink" href="#bioemma" title="Link to this heading"></a></h2>
+<p><strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">2.4_BioEMMA.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">GenerateMap</span></code>
+<strong>Инструмент:</strong> BioEMMA (образ <code class="docutils literal notranslate"><span class="pre">developmentontheedge/bioemma:1.0.0</span></code>)</p>
+<section id="id47">
+<h3>Назначение<a class="headerlink" href="#id47" title="Link to this heading"></a></h3>
+<p>Автоматическая реконструкция и генерация набора метаболических карт на основе
+готовой модели и списка путей (pathways), с дальнейшим объединением карт
+в интегральное представление.</p>
+</section>
+<section id="id48">
+<h3>Входные параметры<a class="headerlink" href="#id48" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Модель (SBML/JSON)</strong> (<code class="docutils literal notranslate"><span class="pre">model</span></code>) — метаболическая модель, для которой нужно
+построить карты.</p></li>
+<li><p><strong>Список путей (pathways)</strong> (<code class="docutils literal notranslate"><span class="pre">pathways</span></code>) — строка или файл со списком путей,
+которые следует визуализировать/анализировать (формат зависит от реализации
+BioEMMA в конкретном сценарии).</p></li>
+</ul>
+</section>
+<section id="id49">
+<h3>Выходные файлы<a class="headerlink" href="#id49" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Объединённая карта</strong> (<code class="docutils literal notranslate"><span class="pre">merged_map</span></code>) — файл <code class="docutils literal notranslate"><span class="pre">output_maps/merged.json</span></code>.</p></li>
+<li><p><strong>Архив всех карт</strong> (<code class="docutils literal notranslate"><span class="pre">all_maps</span></code>) — архив <code class="docutils literal notranslate"><span class="pre">output_maps.zip</span></code> со всеми сгенерированными картами.</p></li>
+</ul>
+</section>
+<section id="id50">
+<h3>Внутренний вызов (команда)<a class="headerlink" href="#id50" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>main.py<span class="w"> </span>--model<span class="w"> </span><span class="si">${</span><span class="nv">model</span><span class="si">}</span><span class="w"> </span>--pathways<span class="w"> </span><span class="si">${</span><span class="nv">pathways</span><span class="si">}</span>
+gzip<span class="w"> </span>output_maps/<span class="w"> </span>output_maps.zip
+</pre></div>
+</div>
+</section>
+<section id="id51">
+<h3>Типичный ручной запуск<a class="headerlink" href="#id51" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>main.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--model<span class="w"> </span>model.sbml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--pathways<span class="w"> </span>pathways.txt
+gzip<span class="w"> </span>output_maps/<span class="w"> </span>output_maps.zip
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="scenarios.html" class="btn btn-neutral float-left" title="Доступные сценарии" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

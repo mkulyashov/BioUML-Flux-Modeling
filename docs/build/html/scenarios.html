@@ -1,0 +1,513 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Доступные сценарии &mdash; BioUML Flux Modeling 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Использование инструментов по отдельности" href="individual_tools.html" />
+    <link rel="prev" title="Перечень используемых инструментов" href="tools.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BioUML Flux Modeling
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Содержание</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Быстрый запуск</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Перечень используемых инструментов</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Доступные сценарии</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#i">Сценарий I: полная реконструкция из сырых прочтений</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gapseq">Полный конвейер (gapseq, из сырых прочтений)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Описание</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Основные входы/выходы</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#modelseed">Полный конвейер (ModelSEED, из сырых прочтений)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Описание</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Основные входы/выходы</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#bactabolize">Полный конвейер (Bactabolize, из сырых прочтений)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Описание</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Основные входы/выходы</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ii">Сценарий II: реконструкция из готовой сборки или аннотации</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Конвейер от сборки/аннотации (gapseq)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Описание</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Основные входы/выходы</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Конвейер от сборки/аннотации (ModelSEED)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Описание</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Основные входы/выходы</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Конвейер от сборки/аннотации (Bactabolize)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id15">Описание</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">Основные входы/выходы</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#iii">Сценарий III: многовариантная реконструкция и сравнительный анализ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Многовариантная реконструкция (из сырых прочтений)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id18">Описание</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">Основные входы/выходы</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">Многовариантная реконструкция (из аннотации/сборки)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id21">Описание</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">Основные входы/выходы</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="individual_tools.html">Использование инструментов по отдельности</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BioUML Flux Modeling</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Доступные сценарии</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/scenarios.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Доступные сценарии<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>В конвейере реконструкции метаболических моделей реализовано три основных
+сценария использования, отличающихся типом входных данных и тем,
+какие инструменты реконструкции используются в одном запуске.</p>
+<ul class="simple">
+<li><p><strong>Сценарий I</strong> — реконструкция моделей из сырых прочтений
+с использованием полного конвейера; в каждом запуске используется один
+выбранный инструмент реконструкции.</p></li>
+<li><p><strong>Сценарий II</strong> — реконструкция моделей из уже существующей сборки генома
+или готовой аннотации, также по одному выбранному инструменту реконструкции.</p></li>
+<li><p><strong>Сценарий III</strong> — реконструкция моделей из уже существующей сборки генома
+или готовой аннотации с одновременным использованием трёх инструментов
+реконструкции и последующим формированием сравнительного отчёта Memote
+по всем полученным моделям.</p></li>
+</ul>
+<p>Ниже описаны все восемь сценариев, реализующих эти варианты.</p>
+<section id="i">
+<h2>Сценарий I: полная реконструкция из сырых прочтений<a class="headerlink" href="#i" title="Link to this heading"></a></h2>
+<p>В этом сценарии конвейер стартует от сырых прочтений (обычно парных Illumina)
+и последовательно выполняет:</p>
+<ul class="simple">
+<li><p>предобработку и контроль качества чтений;</p></li>
+<li><p>сборку генома;</p></li>
+<li><p>аннотацию генома;</p></li>
+<li><p>реконструкцию метаболической модели выбранным инструментом;</p></li>
+<li><p>обогащение модели путями;</p></li>
+<li><p>оценку качества модели (memote);</p></li>
+<li><p>построение метаболических карт (BioEMMA).</p></li>
+</ul>
+<p>Общий формат входных параметров для сценариев «из прочтений»:</p>
+<ul class="simple">
+<li><p><strong>Входные чтения R1</strong> (<code class="docutils literal notranslate"><span class="pre">reads1</span></code>) — файл FASTQ с прочтениями R1.</p></li>
+<li><p><strong>Входные чтения R2</strong> (<code class="docutils literal notranslate"><span class="pre">reads2</span></code>) — файл FASTQ с прочтениями R2.</p></li>
+<li><p><strong>Список путей для метаболических карт</strong> (<code class="docutils literal notranslate"><span class="pre">pathways</span></code>) — необязательный параметр;
+если не задан, используется значение по умолчанию внутри BioEMMA.</p></li>
+</ul>
+<p>На уровне WDL все сценарии используют единое имя workflow:
+<code class="docutils literal notranslate"><span class="pre">ModelReconstructionPipeline</span></code>.</p>
+<section id="gapseq">
+<h3>Полный конвейер (gapseq, из сырых прочтений)<a class="headerlink" href="#gapseq" title="Link to this heading"></a></h3>
+<p><strong>Вариант:</strong> полный конвейер реконструкции с использованием gapseq
+<strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">gapseq_from_sequences.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">ModelReconstructionPipeline</span></code></p>
+<section id="id2">
+<h4>Описание<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<p>Конвейер строит модель с использованием <strong>gapseq</strong> в качестве основного
+инструмента реконструкции. Внутри workflow последовательно вызываются:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fastp</span></code> — очистка чтений;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fastqc1</span></code> и <code class="docutils literal notranslate"><span class="pre">fastqc2</span></code> — контроль качества по R1 и R2;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spades</span></code> — сборка генома;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prokka</span></code> — аннотация сборки;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gapseq</span></code> — первичная реконструкция метаболической модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cobramod</span></code> — обогащение модели путями и аннотациями;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">memote</span></code> — оценка качества модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bioemma</span></code> — построение метаболических карт (параметр <code class="docutils literal notranslate"><span class="pre">pathways</span></code> передаётся из входа).</p></li>
+</ul>
+</section>
+<section id="id3">
+<h4>Основные входы/выходы<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Вход: сырые чтения (<code class="docutils literal notranslate"><span class="pre">reads1</span></code>, <code class="docutils literal notranslate"><span class="pre">reads2</span></code>) и опционально список путей (<code class="docutils literal notranslate"><span class="pre">pathways</span></code>).</p></li>
+<li><p>Выход: по крайней мере одна модель (SBML), отчёт memote и файлы с метаболическими картами.</p></li>
+</ul>
+</section>
+</section>
+<section id="modelseed">
+<h3>Полный конвейер (ModelSEED, из сырых прочтений)<a class="headerlink" href="#modelseed" title="Link to this heading"></a></h3>
+<p><strong>Вариант:</strong> полный конвейер реконструкции с использованием ModelSEED
+<strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">modelseed_from_sequences.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">ModelReconstructionPipeline</span></code></p>
+<section id="id4">
+<h4>Описание<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<p>Конвейер аналогичен варианту с gapseq, но в качестве инструмента реконструкции
+используется <strong>ModelSEED</strong>. Внутри workflow вызываются:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fastp</span></code> — очистка чтений;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fastqc1</span></code> и <code class="docutils literal notranslate"><span class="pre">fastqc2</span></code> — контроль качества;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spades</span></code> — сборка генома;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prokka</span></code> — аннотация;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modelseed</span></code> — реконструкция модели по данным ModelSEED;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cobramod</span></code> — обогащение модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">memote</span></code> — оценка качества;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bioemma</span></code> — построение метаболических карт.</p></li>
+</ul>
+</section>
+<section id="id5">
+<h4>Основные входы/выходы<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Вход: <code class="docutils literal notranslate"><span class="pre">reads1</span></code>, <code class="docutils literal notranslate"><span class="pre">reads2</span></code>, опционально <code class="docutils literal notranslate"><span class="pre">pathways</span></code>.</p></li>
+<li><p>Выход: модель, отчёт memote, метаболические карты.</p></li>
+</ul>
+</section>
+</section>
+<section id="bactabolize">
+<h3>Полный конвейер (Bactabolize, из сырых прочтений)<a class="headerlink" href="#bactabolize" title="Link to this heading"></a></h3>
+<p><strong>Вариант:</strong> полный конвейер реконструкции с использованием Bactabolize
+<strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">bactabolize_from_sequences.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">ModelReconstructionPipeline</span></code></p>
+<section id="id6">
+<h4>Описание<a class="headerlink" href="#id6" title="Link to this heading"></a></h4>
+<p>Этот конвейер реализует полный путь от сырых чтений до штамм-специфической
+метаболической модели, построенной с помощью <strong>Bactabolize</strong>. Внутри workflow
+последовательно выполняются:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fastp</span></code> — предобработка и триммирование чтений; основной поток конвейера.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fastqc1</span></code> и <code class="docutils literal notranslate"><span class="pre">fastqc2</span></code> — контроль качества чтений для R1 и R2.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spades</span></code> — сборка генома.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prokka</span></code> — аннотация полученной сборки.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bactabolize</span></code> — реконструкция штамм-специфичной черновой модели
+на основе референсной модели и референсных последовательностей.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cobramod</span></code> — дополнительное «насыщение» модели путями и аннотациями.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">memote</span></code> — построение отчёта по качеству итоговой модели.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bioemma</span></code> — генерация метаболических карт на основе полученной модели
+(список путей передаётся параметром <code class="docutils literal notranslate"><span class="pre">pathways</span></code>, при его отсутствии
+используется значение по умолчанию внутри workflow).</p></li>
+</ul>
+</section>
+<section id="id7">
+<h4>Основные входы/выходы<a class="headerlink" href="#id7" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Вход:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">reads1</span></code>, <code class="docutils literal notranslate"><span class="pre">reads2</span></code> — сырые чтения в формате FASTQ;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ref_genes_fp</span></code> — Файл генов из референсной (пангеномной) модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ref_proteins_fp</span></code> — Файл аминокислотные последовательности белков референсной (пангеномной) модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ref_proteins_fp</span></code> — пан-модель используемая Bactabolize для генерации штамм-специфичной модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pathways</span></code> (опционально) — список путей для BioEMMA.</p></li>
+</ul>
+</li>
+<li><p>Выход:</p>
+<ul>
+<li><p>итоговая модель (SBML/файл, возвращаемый задачей <code class="docutils literal notranslate"><span class="pre">cobramod</span></code>);</p></li>
+<li><p>HTML-отчёт memote;</p></li>
+<li><p>набор файлов с метаболическими картами (архив/каталог BioEMMA).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="ii">
+<h2>Сценарий II: реконструкция из готовой сборки или аннотации<a class="headerlink" href="#ii" title="Link to this heading"></a></h2>
+<p>В этом сценарии конвейер стартует не с сырых прочтений, а с уже подготовленного
+файла генома (сборка и/или аннотация). Этапы предобработки и сборки либо уже
+выполнены, либо не нужны.</p>
+<p>Общий формат входных параметров для сценариев «из аннотации/сборки»:</p>
+<ul class="simple">
+<li><p><strong>Готовый геномный файл</strong> (<code class="docutils literal notranslate"><span class="pre">annotation</span></code>) — входной файл, который передаётся
+в инструменты реконструкции как основной вход (обычно это сборка в формате
+FASTA или файл, совместимый с соответствующим инструментом).</p></li>
+<li><p><strong>Список путей для метаболических карт</strong> (<code class="docutils literal notranslate"><span class="pre">pathways</span></code>) — необязательный параметр
+для BioEMMA.</p></li>
+</ul>
+<section id="id8">
+<h3>Конвейер от сборки/аннотации (gapseq)<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p><strong>Вариант:</strong> реконструкция из готовой сборки/аннотации с использованием gapseq
+<strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">gapseq_from_annotation.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">ModelReconstructionPipeline</span></code></p>
+<section id="id9">
+<h4>Описание<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
+<p>Конвейер принимает готовый геномный файл (<code class="docutils literal notranslate"><span class="pre">annotation</span></code>) и строит модель
+с помощью <strong>gapseq</strong>, а затем обогащает и анализирует её:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gapseq</span></code> — реконструкция модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cobramod</span></code> — обогащение модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">memote</span></code> — оценка качества;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bioemma</span></code> — построение метаболических карт (использует <code class="docutils literal notranslate"><span class="pre">pathways</span></code>, если задан).</p></li>
+</ul>
+</section>
+<section id="id10">
+<h4>Основные входы/выходы<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Вход: <code class="docutils literal notranslate"><span class="pre">annotation</span></code>, опционально <code class="docutils literal notranslate"><span class="pre">pathways</span></code>.</p></li>
+<li><p>Выход: модель, отчёт memote, карты BioEMMA.</p></li>
+</ul>
+</section>
+</section>
+<section id="id11">
+<h3>Конвейер от сборки/аннотации (ModelSEED)<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<p><strong>Вариант:</strong> реконструкция из готовой сборки/аннотации с использованием ModelSEED
+<strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">modelseed_from_annotation.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">ModelReconstructionPipeline</span></code></p>
+<section id="id12">
+<h4>Описание<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
+<p>Здесь реконструкция выполняется с помощью <strong>ModelSEED</strong>, при этом:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">modelseed</span></code> — первичная реконструкция модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cobramod</span></code> — обогащение;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">memote</span></code> — оценка качества;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bioemma</span></code> — метаболические карты.</p></li>
+</ul>
+</section>
+<section id="id13">
+<h4>Основные входы/выходы<a class="headerlink" href="#id13" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Вход: <code class="docutils literal notranslate"><span class="pre">annotation</span></code>, опционально <code class="docutils literal notranslate"><span class="pre">pathways</span></code>.</p></li>
+<li><p>Выход: модель, отчёт memote, метаболические карты.</p></li>
+</ul>
+</section>
+</section>
+<section id="id14">
+<h3>Конвейер от сборки/аннотации (Bactabolize)<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<p><strong>Вариант:</strong> реконструкция из готовой сборки/аннотации с использованием Bactabolize
+<strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">bactabolize_from_annotation.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">ModelReconstructionPipeline</span></code></p>
+<section id="id15">
+<h4>Описание<a class="headerlink" href="#id15" title="Link to this heading"></a></h4>
+<p>В этом варианте конвейер стартует не с сырых прочтений, а с уже готовой
+сборки или аннотации генома (вход <code class="docutils literal notranslate"><span class="pre">annotation</span></code>). Далее:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bactabolize</span></code> — реконструкция штамм-специфичной черновой модели
+на основе референсной модели и референсных последовательностей.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cobramod</span></code> — обогащение черновой модели путями и аннотациями.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">memote</span></code> — расчёт и сохранение отчёта о качестве модели.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bioemma</span></code> — автоматическая генерация метаболических карт по итоговой модели.</p></li>
+</ul>
+</section>
+<section id="id16">
+<h4>Основные входы/выходы<a class="headerlink" href="#id16" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Вход:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">annotation</span></code> — файл сборки/аннотации, используемый Bactabolize;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ref_genes_fp</span></code> — Файл генов из референсной (пангеномной) модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ref_proteins_fp</span></code> — Файл аминокислотные последовательности белков референсной (пангеномной) модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ref_proteins_fp</span></code> — пан-модель используемая Bactabolize для генерации штамм-специфичной модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pathways</span></code> (опционально) — список путей для BioEMMA.</p></li>
+</ul>
+</li>
+<li><p>Выход:</p>
+<ul>
+<li><p>итоговая модель (после <code class="docutils literal notranslate"><span class="pre">cobramod</span></code>);</p></li>
+<li><p>отчёт memote;</p></li>
+<li><p>файлы метаболических карт (BioEMMA).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="iii">
+<h2>Сценарий III: многовариантная реконструкция и сравнительный анализ<a class="headerlink" href="#iii" title="Link to this heading"></a></h2>
+<p>В этом сценарии на одних и тех же исходных данных выполняется <strong>одновременная</strong>
+реконструкция несколькими инструментами (три из четырёх доступных в конвейере),
+после чего для всех полученных моделей строятся отчёты memote и, при необходимости,
+метаболические карты.</p>
+<p>Такой сценарий реализован в двух вариантах:</p>
+<ul class="simple">
+<li><p>из сырых прочтений (полный путь от reads до модели),</p></li>
+<li><p>из готовой сборки/аннотации.</p></li>
+</ul>
+<section id="id17">
+<h3>Многовариантная реконструкция (из сырых прочтений)<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<p><strong>Вариант:</strong> одновременная реконструкция тремя инструментами из сырых прочтений
+<strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">bactabolize_gapseq_modelseed_from_sequences.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">ModelReconstructionPipeline</span></code></p>
+<section id="id18">
+<h4>Описание<a class="headerlink" href="#id18" title="Link to this heading"></a></h4>
+<p>Этот workflow реализует полный путь от сырых чтений до <strong>трёх</strong> отдельных
+метаболических моделей, полученных разными инструментами, с последующей
+оценкой и визуализацией. Общие шаги:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fastp</span></code> — предобработка и триммирование чтений (основной поток).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fastqc1</span></code> и <code class="docutils literal notranslate"><span class="pre">fastqc2</span></code> — QC R1/R2 (боковые ветки для отчётов).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spades</span></code> — сборка генома.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prokka</span></code> — аннотация сборки.</p></li>
+</ul>
+<p>Далее конвейер ветвится на три независимые реконструкции:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bactabolize</span></code> — первая модель.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gapseq</span></code> — вторая модель.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modelseed</span></code> — третья модель.</p></li>
+</ul>
+<p>Для каждой полученной модели выполняются шаги постобработки:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cobramod</span></code> — обогащение модели путями.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">memote</span></code> — оценка качества модели и формирование отчёта.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bioemma</span></code> — построение метаболических карт (список путей задаётся <code class="docutils literal notranslate"><span class="pre">pathways</span></code>,
+при отсутствии используется значение по умолчанию).</p></li>
+</ul>
+</section>
+<section id="id19">
+<h4>Основные входы/выходы<a class="headerlink" href="#id19" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Вход:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">reads1</span></code>, <code class="docutils literal notranslate"><span class="pre">reads2</span></code> — сырые FASTQ;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ref_genes_fp</span></code> — Файл генов из референсной (пангеномной) модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ref_proteins_fp</span></code> — Файл аминокислотные последовательности белков референсной (пангеномной) модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ref_proteins_fp</span></code> — пан-модель используемая Bactabolize для генерации штамм-специфичной модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pathways</span></code> (опционально) — список путей для BioEMMA.</p></li>
+</ul>
+</li>
+<li><p>Выход:</p>
+<ul>
+<li><p>три модели (Bactabolize, gapseq, ModelSEED);</p></li>
+<li><p>три отчёта memote для каждой модели;</p></li>
+<li><p>сравнительный отчёт memote между 3 реконструкциями;</p></li>
+<li><p>набор метаболических карт по каждой модели (или общий архив, в зависимости
+от настроек BioEMMA).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="id20">
+<h3>Многовариантная реконструкция (из аннотации/сборки)<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<p><strong>Вариант:</strong> одновременная реконструкция тремя инструментами из готовой аннотации
+<strong>WDL-файл:</strong> <code class="docutils literal notranslate"><span class="pre">bactabolize_gapseq_modelseed_from_annotation.wdl</span></code>
+<strong>Workflow:</strong> <code class="docutils literal notranslate"><span class="pre">ModelReconstructionPipeline</span></code></p>
+<section id="id21">
+<h4>Описание<a class="headerlink" href="#id21" title="Link to this heading"></a></h4>
+<p>В этом варианте конвейер стартует с уже готовой сборки/аннотации (вход
+<code class="docutils literal notranslate"><span class="pre">annotation</span></code>) и параллельно строит три модели:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bactabolize</span></code> — модель на основе референсной пан-модели.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gapseq</span></code> — модель на основе предсказанных путей/транспортеров.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modelseed</span></code> — модель, реконструированная через инфраструктуру ModelSEED.</p></li>
+</ul>
+<p>Для каждой из моделей выполняется единый набор шагов анализа:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cobramod</span></code> — дополнительное обогащение моделью путей.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">memote</span></code> — построение отчётов качества модели.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bioemma</span></code> — генерация метаболических карт по каждой модели.</p></li>
+</ul>
+</section>
+<section id="id22">
+<h4>Основные входы/выходы<a class="headerlink" href="#id22" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Вход:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">annotation</span></code> — файл сборки/аннотации генома;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ref_genes_fp</span></code> — Файл генов из референсной (пангеномной) модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ref_proteins_fp</span></code> — Файл аминокислотные последовательности белков референсной (пангеномной) модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ref_proteins_fp</span></code> — пан-модель используемая Bactabolize для генерации штамм-специфичной модели;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pathways</span></code> (опционально) — список путей для BioEMMA.</p></li>
+</ul>
+</li>
+<li><p>Выход:</p>
+<ul>
+<li><p>три итоговые модели;</p></li>
+<li><p>три отчёта memote для каждой модели;</p></li>
+<li><p>сравнительный отчёт memote между 3 реконструкциями;</p></li>
+<li><p>набор карт, сгенерированных BioEMMA (один или несколько архивов).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tools.html" class="btn btn-neutral float-left" title="Перечень используемых инструментов" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="individual_tools.html" class="btn btn-neutral float-right" title="Использование инструментов по отдельности" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

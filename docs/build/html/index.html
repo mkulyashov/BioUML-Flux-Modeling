@@ -1,0 +1,142 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Документация по реконструкции потоковых моделей в BioUML &mdash; BioUML Flux Modeling 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Быстрый запуск" href="quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            BioUML Flux Modeling
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Содержание</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Быстрый запуск</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Перечень используемых инструментов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scenarios.html">Доступные сценарии</a></li>
+<li class="toctree-l1"><a class="reference internal" href="individual_tools.html">Использование инструментов по отдельности</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">BioUML Flux Modeling</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Документация по реконструкции потоковых моделей в BioUML</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="biouml">
+<h1>Документация по реконструкции потоковых моделей в BioUML<a class="headerlink" href="#biouml" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Содержание</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Быстрый запуск</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Перечень используемых инструментов</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id2">Общий обзор инструментов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id3">Инструменты для сборки и аннотации бактериального генома</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id4">Инструменты для реконструкции и анализа моделей</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scenarios.html">Доступные сценарии</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scenarios.html#i">Сценарий I: полная реконструкция из сырых прочтений</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scenarios.html#ii">Сценарий II: реконструкция из готовой сборки или аннотации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scenarios.html#iii">Сценарий III: многовариантная реконструкция и сравнительный анализ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="individual_tools.html">Использование инструментов по отдельности</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="individual_tools.html#fastp">fastp: очистка и триммирование чтений</a></li>
+<li class="toctree-l2"><a class="reference internal" href="individual_tools.html#fastqc">FastQC: контроль качества чтений</a></li>
+<li class="toctree-l2"><a class="reference internal" href="individual_tools.html#spades">SPAdes: сборка генома</a></li>
+<li class="toctree-l2"><a class="reference internal" href="individual_tools.html#quast">QUAST: оценка качества сборки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="individual_tools.html#prokka">Prokka: аннотация генома</a></li>
+<li class="toctree-l2"><a class="reference internal" href="individual_tools.html#modelseed">ModelSEED: реконструкция черновой модели</a></li>
+<li class="toctree-l2"><a class="reference internal" href="individual_tools.html#gapseq">gapseq: реконструкция модели по геному</a></li>
+<li class="toctree-l2"><a class="reference internal" href="individual_tools.html#bactabolize">Bactabolize: автоматическая реконструкция по референс-модели</a></li>
+<li class="toctree-l2"><a class="reference internal" href="individual_tools.html#cobramod">CobraMod: насыщение модели аннотациями путей</a></li>
+<li class="toctree-l2"><a class="reference internal" href="individual_tools.html#memote">memote: оценка качества метаболической модели</a></li>
+<li class="toctree-l2"><a class="reference internal" href="individual_tools.html#bioemma">BioEMMA: автоматическая генерация метаболических карт</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Быстрый запуск" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
